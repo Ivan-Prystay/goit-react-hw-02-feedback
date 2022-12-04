@@ -13,13 +13,13 @@ export class FeedbackList extends Component {
         <ul>
           Statistics feedback
           <li>
-            Good<span>{this.state.good}</span>
+            Good<span style={{ color: 'green' }}>{this.state.good}</span>
           </li>
           <li>
-            Neutral<span>{this.state.neutral}</span>
+            Neutral<span style={{ color: 'blue' }}>{this.state.neutral}</span>
           </li>
           <li>
-            Bad<span>{this.state.bad}</span>
+            Bad<span style={{ color: 'red' }}>{this.state.bad}</span>
           </li>
         </ul>
       </div>
