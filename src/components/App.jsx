@@ -1,3 +1,4 @@
+import { FeedbackList } from './FeedbackList/FeedbackList';
 export const App = () => {
   return (
     <div
@@ -10,7 +11,7 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      React homework 02 feedback
+      <FeedbackList />
     </div>
   );
 };
