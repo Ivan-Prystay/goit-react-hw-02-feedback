@@ -43,36 +43,44 @@ import { ListFeed, Container } from './FeedbackList.styled';
 
 export class FeedbackList extends Component {
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 20,
+    good: 5,
+    neutral: 5,
+    bad: 5,
   };
 
   render() {
     return (
       <Container>
+        <h2>Please leave feedback</h2>
         <div>
-          <h1>Please leave feedback</h1>
-          <button>Good</button>
-          <button>Neutral</button>
-          <button>Bad</button>
+          {Object.entries(this.state).map(item => (
+            <button>
+              <span>{item[0]}</span>
+            </button>
+          ))}
         </div>
+
         <h2>Feedback statistics</h2>
         <ListFeed>
-          <li>
-            {'Good: '}
-            <span style={{ color: 'green' }}>{this.state.good}</span>
-          </li>
-          <li>
-            Neutral: <span style={{ color: 'blue' }}>{this.state.neutral}</span>
-          </li>
-          <li>
-            Bad: <span style={{ color: 'red' }}>{this.state.bad}</span>
-          </li>
+          {Object.entries(this.state).map(item => (
+            <li>
+              <span>{item[0]} </span>
+              <span>{item[1]}</span>
+            </li>
+          ))}
         </ListFeed>
         <div>
-          <p>Total: </p>
-          <p>Positive feedback: </p>
+          <p>Total: {this.state.good + this.state.neutral + this.state.bad} </p>
+          <p>
+            Positive feedback:
+            {(this.state.good /
+              (this.state.good + this.state.neutral + this.state.bad)) *
+              100}
+            %
+          </p>
+        </div>
+        <div>
+          <p>ErrorErrorErrorError</p>
         </div>
       </Container>
     );
