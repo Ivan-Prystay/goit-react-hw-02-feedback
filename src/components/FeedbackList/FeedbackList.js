@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 
-import { ListFeed, Container } from './FeedbackList.styled';
+import {
+  ListFeed,
+  Container,
+  ListItem,
+  ButtonGrupp,
+  Button,
+  StatInfo,
+} from './FeedbackList.styled';
 /*
  static defaultProps = {
     step: 1,
@@ -43,47 +50,42 @@ import { ListFeed, Container } from './FeedbackList.styled';
 
 export class FeedbackList extends Component {
   state = {
-    good: 5,
-    neutral: 5,
-    bad: 5,
+    good: 0,
+    neutral: 'f',
+    bad: 0,
   };
 
   render() {
+    const totalFeedback = Object.values(this.state).reduce((a, b) => a + b);
     return (
       <Container>
         <h2>Please leave feedback</h2>
-        <div>
+        <ButtonGrupp>
           {Object.entries(this.state).map(item => (
-            <button>
-              <span>{item[0]}</span>
-            </button>
+            <Button type="button" key={item[0]}>
+              {item[0]}
+            </Button>
           ))}
-        </div>
-
+        </ButtonGrupp>
         <h2>Feedback statistics</h2>
         <ListFeed>
           {Object.entries(this.state).map(item => (
-            <li>
+            <ListItem key={item[0]}>
               <span>{item[0]} </span>
               <span>{item[1]}</span>
-            </li>
+            </ListItem>
           ))}
         </ListFeed>
-        <div>
-          <p>Total: {this.state.good + this.state.neutral + this.state.bad} </p>
+        <StatInfo>
+          <p>Total: {totalFeedback}</p>
           <p>
             Positive feedback:
-            {(this.state.good /
-              (this.state.good + this.state.neutral + this.state.bad)) *
-              100}
-            %
+            {(this.state.good / totalFeedback) * 100}%
           </p>
-        </div>
-        <div>
+
           <p>ErrorErrorErrorError</p>
-        </div>
+        </StatInfo>
       </Container>
     );
   }
 }
-console.dir('FeedbackList: ', typeof FeedbackList);
