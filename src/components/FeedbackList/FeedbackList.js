@@ -51,7 +51,7 @@ import {
 export class FeedbackList extends Component {
   state = {
     good: 0,
-    neutral: 'f',
+    neutral: 0,
     bad: 0,
   };
 
