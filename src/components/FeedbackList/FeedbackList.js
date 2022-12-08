@@ -44,9 +44,9 @@ import {
           Decrement by {step}
         </button>
       </div>
-    );
-  }
-*/
+      );
+    }
+    */
 
 export class FeedbackList extends Component {
   state = {
@@ -62,7 +62,13 @@ export class FeedbackList extends Component {
         <h2>Please leave feedback</h2>
         <ButtonGrupp>
           {Object.entries(this.state).map(item => (
-            <Button type="button" key={item[0]}>
+            <Button
+              type="button"
+              key={item[0]}
+              //*===========================================
+              //?                         onClick={this.setState(item => item[1] + 1)}
+              //!===========================================
+            >
               {item[0]}
             </Button>
           ))}
