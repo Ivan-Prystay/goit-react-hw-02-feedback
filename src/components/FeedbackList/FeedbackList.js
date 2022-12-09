@@ -16,6 +16,18 @@ export class FeedbackList extends Component {
     bad: 0,
   };
 
+  //!=================================================//
+
+  hangleClick = item => {
+    this.setState({
+      good: item[1] + 1,
+      neutral: item[1] + 1,
+      bad: item[1] + 1,
+    });
+  };
+
+  //!=================================================//
+
   countTotalFeedback = () => Object.values(this.state).reduce((a, b) => a + b);
 
   countPositiveFeedbackPercentage = () =>
@@ -27,7 +39,11 @@ export class FeedbackList extends Component {
         <h2>Please leave feedback</h2>
         <ButtonGrupp>
           {Object.entries(this.state).map(item => (
-            <Button type="button" key={item[0]}>
+            <Button
+              type="button"
+              key={item[0]}
+              onClick={() => this.hangleClick(item)}
+            >
               {item[0]}
             </Button>
           ))}
@@ -62,13 +78,3 @@ export class FeedbackList extends Component {
     );
   }
 }
-
-/*
-
-<h1>Hello {username}</h1>
-      {unreadMessages.length > 0 ? (
-        <p>You have {unreadMessages.length} unread messages.</p>
-      ) : (
-        <p>No unread messages.</p>
-      )}
-*/
