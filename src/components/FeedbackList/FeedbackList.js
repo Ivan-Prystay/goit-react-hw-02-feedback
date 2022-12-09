@@ -18,12 +18,15 @@ export class FeedbackList extends Component {
 
   //!=================================================//
 
-  hangleClick = item => {
-    this.setState({
-      good: item[1] + 1,
-      neutral: item[1] + 1,
-      bad: item[1] + 1,
-    });
+  // hangleClick = item => {
+  //   this.setState({
+  //     good: item[1] + 1,
+  //     neutral: item[1] + 1,
+  //     bad: item[1] + 1,
+  //   });
+  // };
+  hangleClick = option => {
+    this.setState(prevState => ({ [option]: prevState[option] + 1 }));
   };
 
   //!=================================================//
@@ -38,13 +41,13 @@ export class FeedbackList extends Component {
       <Container>
         <h2>Please leave feedback</h2>
         <ButtonGrupp>
-          {Object.entries(this.state).map(item => (
+          {Object.keys(this.state).map(option => (
             <Button
               type="button"
-              key={item[0]}
-              onClick={() => this.hangleClick(item)}
+              key={option}
+              onClick={() => this.hangleClick(option)}
             >
-              {item[0]}
+              {option}
             </Button>
           ))}
         </ButtonGrupp>
