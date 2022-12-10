@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 
-import {
-  ListFeed,
-  Container,
-  ListItem,
-  ButtonGrupp,
-  Button,
-  StatInfo,
-} from './FeedbackList.styled';
+import { ButtonGrupp, Button } from './FeedbackList.styled';
+import { Statistics } from './Statistics/Statistics';
 
 export class FeedbackList extends Component {
   state = {
@@ -27,7 +21,7 @@ export class FeedbackList extends Component {
 
   render() {
     return (
-      <Container>
+      <>
         <h2>Please leave feedback</h2>
         <ButtonGrupp>
           {Object.keys(this.state).map(option => (
@@ -42,31 +36,14 @@ export class FeedbackList extends Component {
         </ButtonGrupp>
 
         <h2>Feedback statistics</h2>
-
-        {this.countTotalFeedback() > 0 ? (
-          <>
-            <ListFeed>
-              {Object.entries(this.state).map(item => (
-                <ListItem key={item[0]}>
-                  {`${item[0]}: `}
-                  {item[1]}
-                </ListItem>
-              ))}
-            </ListFeed>
-            <StatInfo>
-              <p>
-                {'Total: '} {this.countTotalFeedback()}
-              </p>
-              <p>
-                {'Positive feedback: '}
-                {this.countPositiveFeedbackPercentage()}%
-              </p>
-            </StatInfo>
-          </>
-        ) : (
-          <p>There is no feedback</p>
-        )}
-      </Container>
+        <Statistics
+          good={this.props.good}
+          neutral={this.props.neutral}
+          bad={this.props.bad}
+          total={this.props.total}
+          positivePercentage={this.props.positivePercentage}
+        />
+      </>
     );
   }
 }
