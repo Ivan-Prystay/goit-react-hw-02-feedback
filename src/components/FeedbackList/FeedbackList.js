@@ -16,20 +16,9 @@ export class FeedbackList extends Component {
     bad: 0,
   };
 
-  //!=================================================//
-
-  // hangleClick = item => {
-  //   this.setState({
-  //     good: item[1] + 1,
-  //     neutral: item[1] + 1,
-  //     bad: item[1] + 1,
-  //   });
-  // };
   hangleClick = option => {
     this.setState(prevState => ({ [option]: prevState[option] + 1 }));
   };
-
-  //!=================================================//
 
   countTotalFeedback = () => Object.values(this.state).reduce((a, b) => a + b);
 
