@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Statistics } from './Statistics/Statistics';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 
 export class App extends Component {
   state = {
@@ -8,7 +9,7 @@ export class App extends Component {
     bad: 0,
   };
 
-  hangleClick = option => {
+  onLeaveFeedback = option => {
     this.setState(prevState => ({ [option]: prevState[option] + 1 }));
   };
 
@@ -19,13 +20,19 @@ export class App extends Component {
 
   render() {
     return (
-      <Statistics
-        good={this.state.good}
-        neutral={this.state.neutral}
-        bad={this.state.bad}
-        total={this.countTotalFeedback}
-        positivePercentage={this.countPositiveFeedbackPercentage}
-      />
+      <>
+        <FeedbackOptions
+          option={Object.keys(this.state)}
+          onLeaveFeedback={this.onLeaveFeedback}
+        />
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.countTotalFeedback()}
+          positivePercentage={this.countPositiveFeedbackPercentage()}
+        />
+      </>
     );
   }
 }
