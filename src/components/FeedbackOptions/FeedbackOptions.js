@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { ButtonGrupp, Button } from './FeedbackOptions.styled';
 
 export class FeedbackOptions extends Component {
@@ -25,3 +27,8 @@ export class FeedbackOptions extends Component {
     );
   }
 }
+
+FeedbackOptions.propTypes = {
+  option: PropTypes.array.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
+};

@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import { ListItem, StatInfo } from './Statistics.styled';
 
-// import { ListItem, StatInfo } from './Statistics.styled';
+import PropTypes from 'prop-types';
+import { ListItem, StatInfo } from './Statistics.styled';
 
 export class Statistics extends Component {
   constructor(props) {
@@ -10,29 +10,23 @@ export class Statistics extends Component {
   }
 
   render() {
+    const { good, neutral, bad, total, positivePercentage } = this.props;
     return (
-      <div>
-        {this.props.total > 0 ? (
-          <StatInfo>
-            <ListItem>Good: {this.props.good} </ListItem>
-            <ListItem>Neutral: {this.props.neutral}</ListItem>
-            <ListItem>Bad: {this.props.bad}</ListItem>
-            <ListItem>Total: {this.props.total}</ListItem>
-            <ListItem>
-              Positive feedback: {this.props.positivePercentage}%
-            </ListItem>
-          </StatInfo>
-        ) : (
-          /* <StatInfo>
-            {Object.entries(this.props).map(item => (
-              <ListItem key={item[0]}>
-                {`${item[0]}: `} {item[1]}
-              </ListItem>
-            ))}
-          </StatInfo> */
-          <p>There is no feedback</p>
-        )}
-      </div>
+      <StatInfo>
+        <ListItem>Good: {good} </ListItem>
+        <ListItem>Neutral: {neutral}</ListItem>
+        <ListItem>Bad: {bad}</ListItem>
+        <ListItem>Total: {total}</ListItem>
+        <ListItem>Positive feedback: {positivePercentage}%</ListItem>
+      </StatInfo>
     );
   }
 }
+
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.string.isRequired,
+};
