@@ -11,19 +11,17 @@ export class FeedbackOptions extends Component {
 
   render() {
     return (
-      <>
-        <ButtonGrupp>
-          {this.props.option.map(option => (
-            <Button
-              type="button"
-              key={option}
-              onClick={() => this.props.onLeaveFeedback([option])}
-            >
-              {option}
-            </Button>
-          ))}
-        </ButtonGrupp>
-      </>
+      <ButtonGrupp>
+        {this.props.option.map(option => (
+          <Button
+            type="button"
+            key={option}
+            onClick={() => this.props.onLeaveFeedback([option])}
+          >
+            {option}
+          </Button>
+        ))}
+      </ButtonGrupp>
     );
   }
 }

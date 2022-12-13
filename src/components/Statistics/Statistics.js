@@ -1,7 +1,7 @@
 import { Component } from 'react';
 
 import PropTypes from 'prop-types';
-import { ListItem, StatInfo } from './Statistics.styled';
+import { StatItem, StatList } from './Statistics.styled';
 
 export class Statistics extends Component {
   constructor(props) {
@@ -12,13 +12,19 @@ export class Statistics extends Component {
   render() {
     const { good, neutral, bad, total, positivePercentage } = this.props;
     return (
-      <StatInfo>
-        <ListItem>Good: {good} </ListItem>
-        <ListItem>Neutral: {neutral}</ListItem>
-        <ListItem>Bad: {bad}</ListItem>
-        <ListItem>Total: {total}</ListItem>
-        <ListItem>Positive feedback: {positivePercentage}%</ListItem>
-      </StatInfo>
+      <StatList>
+        <StatItem>Good: {good} </StatItem>
+        <StatItem>Neutral: {neutral}</StatItem>
+        <StatItem>Bad: {bad}</StatItem>
+        <StatItem>Total: {total}</StatItem>
+        <StatItem>Positive feedback: {positivePercentage}%</StatItem>
+        {/* {Object.entries(this.props).map(item => (
+          <StatItem key={item[0]}>
+            {`${item[0]}: `}
+            {item[1]}
+          </StatItem>
+        ))} */}
+      </StatList>
     );
   }
 }
